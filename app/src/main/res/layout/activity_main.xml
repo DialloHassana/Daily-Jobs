@@ -30,12 +30,5 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:onClick="login" />
 
-    <Button
-        android:text="Button"
-        android:layout_width="143dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/button3" />
-
 
 </android.support.design.widget.CoordinatorLayout>
