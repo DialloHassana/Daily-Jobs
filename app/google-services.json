@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "807909029187",
+    "firebase_url": "https://daily-jobs.firebaseio.com",
+    "project_id": "daily-jobs",
+    "storage_bucket": "daily-jobs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807909029187:android:99d745cf4cf496fe",
+        "android_client_info": {
+          "package_name": "tn.enis.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807909029187-l2meh20leecicru3iglq43s031tvj6gg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKTwS6nbLSIFfUOCpgkJ_m0CM9LH2wrHw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807909029187:android:70297be38702ec87",
+        "android_client_info": {
+          "package_name": "tn.enis.com.daily_jobs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807909029187-p1gnip1qbsd0s5vj35fu68hutka98jnv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tn.enis.com.daily_jobs",
+            "certificate_hash": "31D7670C2E467F9FD4784D22C6AA74D602D152A4"
+          }
+        },
+        {
+          "client_id": "807909029187-l2meh20leecicru3iglq43s031tvj6gg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKTwS6nbLSIFfUOCpgkJ_m0CM9LH2wrHw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807909029187-l2meh20leecicru3iglq43s031tvj6gg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

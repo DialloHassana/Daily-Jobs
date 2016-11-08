@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<!-- saved from url=(0169)https://forums.raywenderlich.com/embed/comments?embed_url=https%3A%2F%2Fwww.raywenderlich.com%2F139322%2Ffirebase-tutorial-getting-started-2&discourse_username=cynicalme -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <link rel="stylesheet" media="screen" href="./embed-c23a8266759c719c181564f1afe9be567a7dd7feb8a475793fa4a155b4b63919.css">
+      <link class="custom-css" rel="stylesheet" href="./7e202ef2-56d7-47d5-98d8-a9c8d15e57dd.css" type="text/css" media="all">
+    <script src="./break_string-cc617154cd957804f2f6a1f3bc68258c9cdca3d4b9a322bf777d145fed04790e.js.download"></script>
+
+      <title>Firebase Tutorial: Getting Started - Official Tutorials - RWForums</title>
+
+    <script>
+      (function() {
+
+        function postUp(msg) {
+          if (parent) {
+            parent.postMessage(msg, 'https://www.raywenderlich.com/139322/firebase-tutorial-getting-started-2');
+          }
+        }
+
+        function clickPostLink(e) {
+          var postId = e.target.getAttribute('data-link-to-post');
+          if (postId) {
+            var postElement = document.getElementById('post-' + postId);
+            if (postElement) {
+              var rect = postElement.getBoundingClientRect();
+              if (rect && rect.top) {
+                postUp({type: 'discourse-scroll', top: rect.top});
+                e.preventDefault();
+                return false;
+              }
+            }
+          }
+        }
+
+        window.onload = function() {
+          // Send a post message with our loaded height
+          postUp({type: 'discourse-resize', height: document['body'].offsetHeight});
+
+          var postLinks = document.querySelectorAll("a[data-link-to-post]"),
+              i;
+
+          for (i=0; i<postLinks.length; i++) {
+            postLinks[i].onclick = clickPostLink;
+          }
+
+          // Make sure all links in the iframe point to _blank
+          var cookedLinks = document.querySelectorAll('.cooked a');
+          for (i=0; i<cookedLinks.length; i++) {
+            cookedLinks[i].target = "_blank";
+          }
+
+          // Adjust all names
+          var names = document.querySelectorAll('.username a');
+          for (i=0; i<names.length; i++) {
+            var username = names[i].innerHTML;
+            if (username) {
+              names[i].innerHTML = new BreakString(username).break();
+            }
+          }
+
+        };
+
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="discourse">
+    <a class="button" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/2">Continue Discussion</a>
+  <span class="replies">38 replies</span>
+</header>
+
+    <article class="post" id="post-26400">
+      <a title="September 19, 2016  5:33pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/2">19 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/fran2711" target="_blank"><img src="./41877_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/fran2711" target="_blank" class="new-user">fran<wbr>​2711</a>
+        </h3>
+        <p>There is an error trying to build in the model GroceryItem. It says: Type "Any" has no subscript members in the init. I don´t know how to make it work.</p>
+
+            <a class="post-replies button" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/2">3 replies</a>
+      </div>
+    </article>
+    <article class="post" id="post-26407">
+      <a title="September 19, 2016  7:04pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/3">19 Sep</a>
+        <a data-link-to-post="26400" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/2">▶ fran2711</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/berko" target="_blank"><img src="./32325_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/berko" target="_blank" class="new-user">berko</a>
+        </h3>
+        <pre><code>init(snapshot: FIRDataSnapshot) {
+    let snapshotValue = snapshot.value as! NSDictionary
+    key = snapshot.key
+    name = snapshotValue["name"] as! String
+    addedByUser = snapshotValue["addedByUser"] as! String
+    completed = snapshotValue["completed"] as! Bool
+    ref = snapshot.ref
+}
+
+func toAnyObject() -&gt; Any {
+    return [
+        "name": name,
+        "addedByUser": addedByUser,
+        "completed": completed
+    ]
+}</code></pre>
+
+      </div>
+    </article>
+    <article class="post" id="post-26449">
+      <a title="September 20, 2016  6:04am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/4">20 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/ys_xs" target="_blank"><img src="./44998_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/ys_xs" target="_blank" class="">ys_<wbr>​xs</a>
+        </h3>
+        <p>There was an error when i install Firebase。Why?<img src="./confounded.png" title=":confounded:" class="emoji" alt=":confounded:"></p>
+
+<p>Installing Firebase (3.5.2)</p>
+
+<p>[!] Error installing Firebase<br>[!] /usr/bin/curl -f -L -o /var/folders/3n/0y5gxtl92l76mj_xc61xzyww0000gn/T/d20160920-20077-zf61bw/file.tgz <a href="https://www.gstatic.com/cpdc/cc5f7aac07ccdd0a/Firebase-3.5.0.tar.gz" rel="nofollow" target="_blank">https://www.gstatic.com/cpdc/cc5f7aac07ccdd0a/Firebase-3.5.0.tar.gz</a> --create-dirs --netrc-optional</p>
+
+<p>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current<br>                                 Dload  Upload   Total   Spent    Left  Speed<br>  0     0    0     0    0     0      0      0 --:--:--  0:00:21 --:--:--     0curl: (7) Failed to connect to <a href="http://www.gstatic.com/" rel="nofollow" target="_blank">www.gstatic.com</a> port 443: Host is down`</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26462">
+      <a title="September 20, 2016  8:24am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/5">20 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/pradeeprajkumar" target="_blank"><img src="./39684_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/pradeeprajkumar" target="_blank" class="new-user">pradeeprajkumar</a>
+        </h3>
+        <p>Will there be a tutorial released on implementing Dynamic link with FireBase in iOS ?</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26463">
+      <a title="September 20, 2016  8:27am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/6">20 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/swiftlearnerforlife" target="_blank"><img src="./44303_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/swiftlearnerforlife" target="_blank" class="">swiftlearnerforlife</a>
+        </h3>
+        <p>Lots of compile errors and warnings which is annoying. Hope this gets fixed soon.</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26491">
+      <a title="September 20, 2016  3:31pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/7">20 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/anthonyroani" target="_blank"><img src="./41968_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/anthonyroani" target="_blank" class="new-user">anthonyroani</a>
+        </h3>
+        <p>Great tutorial ! Thank you <img src="./grinning.png" title=":grinning:" class="emoji" alt=":grinning:"></p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26507">
+      <a title="September 20, 2016  8:27pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/8">20 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/chomper" target="_blank"><img src="./38679_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/chomper" target="_blank" class="">chomper</a>
+        </h3>
+        <p>ERROR</p>
+
+<p>Apple Mach-O Linker Error Group<br>clang: error: linker command failed with exit code 1 (use -v to see invocation)</p>
+
+            <a data-link-to-post="26874" class="post-replies button" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/8" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-26513">
+      <a title="September 20, 2016 11:50pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/9">20 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/ryann786" target="_blank"><img src="./41998_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/ryann786" target="_blank" class="new-user">ryann<wbr>​786</a>
+        </h3>
+        <p>within the grocery item struct, I get the following error:</p>
+
+<p>Type 'Any' has no subscript members.</p>
+
+<p>on these 3 lines</p>
+
+<p>name = snapshot.value!["name"] as! String<br>addedByUser = snapshot.value!["addedByUser"] as! String<br>completed = snapshot.value!["completed"] as! Bool</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26530">
+      <a title="September 21, 2016  4:48am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/10">21 Sep</a>
+        <a data-link-to-post="26400" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/2">▶ fran2711</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/sloomis7" target="_blank"><img src="./42001_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/sloomis7" target="_blank" class="new-user">sloomis<wbr>​7</a>
+        </h3>
+        <p>func toAnyObject() -&gt; AnyObject {</p>
+
+<pre><code>return ["name": name, "addedByUser": addedByUser, "completed": completed] **as AnyObject**</code></pre>
+
+<p>  }</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26534">
+      <a title="September 21, 2016  5:22am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/11">21 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/cleota" target="_blank"><img src="./42014_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/cleota" target="_blank" class="new-user">cleota</a>
+        </h3>
+        <p>Hi there, I have used your tutorial and its great. Is there anyway to use Firebase for OS X applications? Or is Firebase specifically designed for Apps and Web Applications alone?  Thanks...</p>
+
+            <a data-link-to-post="26973" class="post-replies button" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/11" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-26578">
+      <a title="September 21, 2016  3:07pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/12">21 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/rcohen" target="_blank"><img src="./42080_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/rcohen" target="_blank" class="new-user">rcohen</a>
+        </h3>
+        <p>So, I built a shopping list manager app a long time ago and it's under supported and still in the store.  MyShopper.  This is feature I've long wanted to add.</p>
+
+<p>Also, I've been a RayWenderlich customer for a while having used many of the tutorials and purchased some of the books.  I have to say, this tutorial is quite ready for prime time.  There are a number of things that require tinkering with right out of the box just to get it to build.  Sure would like to see a touch more attention to the quality here.</p>
+
+<p>Thanks and please take this as constructive feedback.  You're doing great work.</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26662">
+      <a title="September 22, 2016  4:14am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/13">22 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/nico75005" target="_blank"><img src="./42173_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/nico75005" target="_blank" class="new-user">nico<wbr>​75005</a>
+        </h3>
+        <p>Great tutorial!</p>
+
+<p>Something I noticed though.<br>When exiting the app, the user is removed from the online users, which is normal.<br>When putting the app in the background, the user stays in the online users, which I guess might be normal as well.<br>When locking the phone, the user is removed from the online users. Let's pretend it's normal.</p>
+
+<p>The problem comes when going back to the app. The user isn't online anymore but he/she should be.</p>
+
+<p>Any idea what's the reason? Bug within the Firebase library?</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26704">
+      <a title="September 22, 2016 11:53am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/14">22 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/swiftlearnerforlife" target="_blank"><img src="./44303_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/swiftlearnerforlife" target="_blank" class="">swiftlearnerforlife</a>
+        </h3>
+        <p>Any chance you could over creating a user with a unique username like Twitter and Instagram? Currently can only authenticate with password and email.</p>
+
+<p>Lots of people seem to be asking for it in relation to Firebase but there doesn't seem to be an accepted answer out there at the moment. Would be amazing if RW could come to the rescue <img src="./slight_smile.png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+
+            <a data-link-to-post="26974" class="post-replies button" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/14" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-26874">
+      <a title="September 24, 2016  3:16pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/15">24 Sep</a>
+        <a data-link-to-post="26507" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/8">▶ chomper</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/cakiem04" target="_blank"><img src="./42422_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/cakiem04" target="_blank" class="new-user">cakiem<wbr>​04</a>
+        </h3>
+        <p>Did you try to launch your project from [project_name].xcworkspace file?</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26904">
+      <a title="September 25, 2016  4:26am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/16">25 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/simonqq" target="_blank"><img src="./11174_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/simonqq" target="_blank" class="">simonqq</a>
+        </h3>
+        <p>Just downloaded the start project and getting a lot of Swift Compiler Errors.</p>
+
+<p>This is on Xcode 8 that was just released. Is anyone else getting this issue?</p>
+
+            <a data-link-to-post="26913" class="post-replies button" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/16" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-26913">
+      <a title="September 25, 2016 10:08am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/17">25 Sep</a>
+        <a data-link-to-post="26904" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/16">▶ simonqq</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/dinsen" target="_blank"><img src="./387_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/dinsen" target="_blank" class="">dinsen</a>
+        </h3>
+        <p>I got the same issue.</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26915">
+      <a title="September 25, 2016 10:30am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/18">25 Sep</a>
+        <a data-link-to-post="26400" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/2">▶ fran2711</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank"><img src="./116_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank" class="new-user">cynicalme</a>
+        </h3>
+        <p>Thanks for the feedback! The sample projects have been updated!</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26916">
+      <a title="September 25, 2016 10:32am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/19">25 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank"><img src="./116_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank" class="new-user">cynicalme</a>
+        </h3>
+        <p>Thank you all for your feedback! The sample projects have been updated, no more compiler issues!</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26944">
+      <a title="September 26, 2016  4:39am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/20">26 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/simonqq" target="_blank"><img src="./11174_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/simonqq" target="_blank" class="">simonqq</a>
+        </h3>
+        <p>Thanks <a class="mention" href="https://forums.raywenderlich.com/users/cynicalme" target="_blank">@cynicalme</a>! Also, for anyone not being able to download the plist file and getting a forbidden file when attempting to download: try to sign out of all your google accounts and make sure you're only signed into the one. I was logged into 2 other accounts and only after signing out was I able to download the file. Perhaps <a class="mention" href="https://forums.raywenderlich.com/users/cynicalme" target="_blank">@cynicalme</a> can make a note of that in the tutorial.</p>
+
+            <a data-link-to-post="26975" class="post-replies button" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/20" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-26947">
+      <a title="September 26, 2016  5:28am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/21">26 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/rubioj3" target="_blank"><img src="./42528_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/rubioj3" target="_blank" class="new-user">rubioj<wbr>​3</a>
+        </h3>
+        <p>I have the most recent xcode 8.1 beta and the app builds and runs perfect. The only issue is, when I go in and create an account, the app crashes and gives a 'EXC_BAD_INSTRUCTION' for step // 2 of the FIRAuth.auth under saveAction. Any way around this?</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26953">
+      <a title="September 26, 2016  6:08am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/22">26 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/vatsal1992" target="_blank"><img src="./42537_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/vatsal1992" target="_blank" class="new-user">vatsal<wbr>​1992</a>
+        </h3>
+        <p>Hello Sir, <br>i've a question about child node in firebase.<br><strong>Database Structure</strong><br>(1) users (root)<br>(1.1) childByAutoId<br>(1.1.1) username<br>(1.1.2) email</p>
+
+<p><strong>Question</strong><br>how to check that <strong>username = foo</strong> is available or not?</p>
+
+            <a data-link-to-post="26976" class="post-replies button" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/22" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-26973">
+      <a title="September 26, 2016 11:10am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/23">26 Sep</a>
+        <a data-link-to-post="26534" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/11">▶ cleota</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank"><img src="./116_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank" class="new-user">cynicalme</a>
+        </h3>
+        <p>Hi Cleota! The Firebase SDK support OS X as well!</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26974">
+      <a title="September 26, 2016 11:14am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/24">26 Sep</a>
+        <a data-link-to-post="26704" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/14">▶ swiftlearnerforlife</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank"><img src="./116_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank" class="new-user">cynicalme</a>
+        </h3>
+        <p>Firebase supports Facebook, Twitter, GitHub and Google OAuth out of the box. If it's fancy you can implement your own authentication logic as well. See: <a href="https://www.firebase.com/docs/web/guide/user-auth.html" rel="nofollow" target="_blank">https://www.firebase.com/docs/web/guide/user-auth.html</a></p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26975">
+      <a title="September 26, 2016 11:15am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/25">26 Sep</a>
+        <a data-link-to-post="26944" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/20">▶ simonqq</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank"><img src="./116_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank" class="new-user">cynicalme</a>
+        </h3>
+        <p>Hello simonqq! I also use multiple Google accounts, had no problem downloading the plist file. I only have to make sure I'm using the correct one.</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-26976">
+      <a title="September 26, 2016 11:21am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/26">26 Sep</a>
+        <a data-link-to-post="26953" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/22">▶ vatsal1992</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank"><img src="./116_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/cynicalme" target="_blank" class="new-user">cynicalme</a>
+        </h3>
+        <p>Hello vatsal19925h,</p>
+
+<p>You can call <code>- fetchProvidersForEmail:completion:</code> to fetch the list of IdPs that can be used for signing in with the provided email address. See the docs for more info: <br><a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth.html#fetchProvidersForEmail" class="onebox" target="_blank" rel="nofollow">https://firebase.google.com/docs/reference/js/firebase.auth.Auth.html#fetchProvidersForEmail</a></p>
+
+      </div>
+    </article>
+    <article class="post" id="post-27025">
+      <a title="September 26, 2016 11:12pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/27">26 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/rubioj3" target="_blank"><img src="./42528_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/rubioj3" target="_blank" class="new-user">rubioj<wbr>​3</a>
+        </h3>
+        <p>Never mind, I was able to fix the issue. I had to add FIRApp.configure() to the AppDelegate.swift     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool</p>
+
+<p>Love the tutorial and thanks for your hard work.</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-27173">
+      <a title="September 28, 2016  6:12pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/28">28 Sep</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/alexknowsswift" target="_blank"><img src="./39749_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/alexknowsswift" target="_blank" class="">alexknowsswift</a>
+        </h3>
+        <p>Where can one find the <em>older</em> version of this tutorial (<strong>Firebase 2.5.1</strong>) written by David East? I'm still using an older version of Firebase in one of my applications and wanted to look at the <strong>presence management system</strong> functionality. Newer documentation would mean I would have to update my code and I haven't reached that point in my project where I want to/need to.</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-27380">
+      <a title="October  1, 2016  5:16pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/29"> 1 Oct</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/tomhartnett" target="_blank"><img src="./43071_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/tomhartnett" target="_blank" class="new-user">tomhartnett</a>
+        </h3>
+        <p>Great tutorial!  I had a question about the database permissions.  After implementing the authentication part, I went back to Firebase console and changed the read/write permissions back to the default ("user != null").  That silenced the warning about the database being public and made me feel better... and, the app still worked! <img src="./slight_smile.png" title=":slight_smile:" class="emoji" alt=":slight_smile:">  I am curious though:  as there is an API key in the GoogleService-Info.plist, could anyone really write to my database without that key (when the permissions were wide-open)?  Thanks.</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-27463">
+      <a title="October  3, 2016  4:34am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/30"> 3 Oct</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/simonqq" target="_blank"><img src="./11174_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/simonqq" target="_blank" class="">simonqq</a>
+        </h3>
+        <p>After I register a user on <code>signUpDidTouch</code>, it does not seem to log me into the tableview screen? It just stays in the login page. </p>
+
+<p>How come it passes in the <code>textFieldLoginEmail</code> and <code>textFieldLoginPassword</code> fields if those are initially empty? Should it not pass in the <code>alert textfields</code> text?</p>
+
+            <a data-link-to-post="27692" class="post-replies button" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/30" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-27692">
+      <a title="October  5, 2016  6:50pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/31"> 5 Oct</a>
+        <a data-link-to-post="27463" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/30">▶ simonqq</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/ppdany" target="_blank"><img src="./43455_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/ppdany" target="_blank" class="new-user">ppdany</a>
+        </h3>
+        <p>Completely agree! You should use the data from the alert view, not from the text fields.</p>
+
+            <a data-link-to-post="28389" class="post-replies button" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/31" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-27982">
+      <a title="October 10, 2016  8:50am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/33">10 Oct</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/emanahov" target="_blank"><img src="./43774_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/emanahov" target="_blank" class="">emanahov</a>
+        </h3>
+        <p>Hello,</p>
+
+<p>I built and run your app. It works fine <img src="./slight_smile.png" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>I tried to upload it to a real iPhone using my provisioning profile and your app bundle ID. The build went smoothly but when I tried to run it on the real device there was an error saying that  </p>
+
+<p>App installation failed<br>The application could not be verified.</p>
+
+<p>I read many opinions on StackOverflow etc and everybody said - just delete the app and try again but it was never installed so I could not delete it.</p>
+
+<p>I also tried changing to my new bundle ID with a new plist generated by Firebase but still no success.</p>
+
+<p>After that I tried rebuilding CocoaPods from scratch but still I get the same error.</p>
+
+<p>I understand it has something to do with the signing of the app before running it on the real iphone but I cannot solve the problem.</p>
+
+<p>Any help?</p>
+
+<p>Thanks</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-28238">
+      <a title="October 13, 2016  6:38am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/34">13 Oct</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/kstars" target="_blank"><img src="./42653_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/kstars" target="_blank" class="">kstars</a>
+        </h3>
+        <p>I was unable to use the Podfile you supplied. Had to morph it to this and then all worked okay after 'pod repo update' and 'pod install':</p>
+
+<h2>Podfile:</h2>
+
+<p>source 'https://github.com/CocoaPods/Specs.git'<br>inhibit_all_warnings!<br>workspace 'Grocr'<br>xcodeproj 'Grocr.xcodeproj'<br>use_frameworks!<br>platform :ios, '10.0'<br>target 'Grocr' do<br>pod 'Firebase/Core'<br>pod 'Firebase/Database'<br>pod 'Firebase/Auth'<br>end</p>
+
+            <a data-link-to-post="28242" class="post-replies button" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/34" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-28242">
+      <a title="October 13, 2016  7:01am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/35">13 Oct</a>
+        <a data-link-to-post="28238" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/34">▶ kstars</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/kstars" target="_blank"><img src="./42653_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/kstars" target="_blank" class="">kstars</a>
+        </h3>
+        <p>Solved this one. The warning you get on the AppDelegate in 8.0, Swift 3.0 will make the call to configure inaccessible if you follow the fix-it (which makes the method private):</p>
+
+<p>Showing All Messages<br>./Grocr-starter/Grocr/AppDelegate.swift:30:8: Instance method 'application(<em>:didFinishLaunchingWithOptions:)' nearly matches optional requirement 'application(</em>:didFinishLaunchingWithOptions:)' of protocol 'UIApplicationDelegate'</p>
+
+<p>Don't do that!</p>
+
+            <a data-link-to-post="28383" class="post-replies button" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/35" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-28246">
+      <a title="October 13, 2016  8:13am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/36">13 Oct</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/kstars" target="_blank"><img src="./42653_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/kstars" target="_blank" class="">kstars</a>
+        </h3>
+        <p>This was very helpful and had almost no issues I could not figure out. Very good job and highly informative. Thanks very much!</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-28383">
+      <a title="October 14, 2016  7:57pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/37">14 Oct</a>
+        <a data-link-to-post="28242" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/35">▶ kstars</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/poseidon" target="_blank"><img src="./43682_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/poseidon" target="_blank" class="">poseidon</a>
+        </h3>
+        <p>how to solve that.?i got the same issue which i cant create user .</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-28389">
+      <a title="October 14, 2016  8:26pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/38">14 Oct</a>
+        <a data-link-to-post="27692" class="in-reply-to" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/31">▶ ppdany</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/poseidon" target="_blank"><img src="./43682_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/poseidon" target="_blank" class="">poseidon</a>
+        </h3>
+        <p>but i still cant create user ..i means the user did not created in firebase</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-28696">
+      <a title="October 19, 2016  2:38am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/39">19 Oct</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/ron_cookson" target="_blank"><img src="./8850_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/ron_cookson" target="_blank" class="">ron_<wbr>​cookson</a>
+        </h3>
+        <p>First I'd like to say that this is a fantastic tutorial. I've learned a lot so far.</p>
+
+<p>But, I can create a user as I see it in the database, But when I try and log in with that user, I get the following error.</p>
+
+<p>2016-10-18 19:32:30.080:  Failed to retrieve the default GCM token after 5 retries</p>
+
+<p>Not sure where to look.</p>
+
+<p>Thanks </p>
+
+<p>Ron Cookson</p>
+
+      </div>
+    </article>
+    <article class="post" id="post-28736">
+      <a title="October 19, 2016  3:02pm" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/40">19 Oct</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/users/pepejeria" target="_blank"><img src="./40695_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/users/pepejeria" target="_blank" class="new-user">pepejeria</a>
+        </h3>
+        <p>In case that you get a "The dependency <code>Firebase/Core</code> is not used in any concrete target." error when doing a pod update, change the Podfile to the following:</p>
+
+<pre><code>target 'Grocr' do
+	pod 'Firebase/Core'
+	pod 'Firebase/Database'
+	pod 'Firebase/Auth'
+end</code></pre>
+
+      </div>
+    </article>
+
+    <footer class="clearfix">
+      <a target="_blank" href="https://forums.raywenderlich.com/"><img class="logo" src="./d0342684bc0d4ca22fe893a3af6083387ed8f474.png" alt="D0342684bc0d4ca22fe893a3af6083387ed8f474"></a>
+      <a class="button" target="_blank" href="https://forums.raywenderlich.com/t/firebase-tutorial-getting-started/19964/40">Continue Discussion</a>
+    </footer>
+    <div class="clearfix"></div>
+
+
+  
+
+</body></html>
