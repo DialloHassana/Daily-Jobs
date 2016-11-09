@@ -59,7 +59,10 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
 
     }
-
+    public void signUp(View view){
+        Intent intent = new Intent(this, SignUp.class);
+        startActivity(intent);
+    }
     public void listJobs(View view){
         Intent intent = new Intent(this, ListJobs.class);
         startActivity(intent);

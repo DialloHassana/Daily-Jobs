@@ -158,5 +158,10 @@ public class Login extends AppCompatActivity  {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }*/
+
+    public void resetPassword(View view){
+        startActivity(new Intent(Login.this,ResetPasswordActivity.class));
+        finish();
+    }
 }
 
