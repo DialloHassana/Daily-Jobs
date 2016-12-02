@@ -1,44 +1,43 @@
 package tn.enis.com.daily_jobs;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import tn.enis.com.daily_jobs.R;
-
-
-public class ListJobs extends ActionBarActivity {
-
-    private LinearLayoutManager lLayout;
+public class ListJob extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_jobs);
-        setTitle("Liste Jobs");
+        setContentView(R.layout.activity_list_job);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        Toolbar topToolBar = (Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(topToolBar);
-        topToolBar.setLogo(R.drawable.logo);
-        topToolBar.setLogoDescription(getResources().getString(R.string.logo_desc));
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
-        /*List<ItemObject> rowListItem = getAllItemList();
-        lLayout = new LinearLayoutManager(ListJobs.this);
-
-        RecyclerView rView = (RecyclerView)findViewById(R.id.recyclerview);
-        rView.setLayoutManager(lLayout);
-
-        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(ListJobs.this, rowListItem);
-        rView.setAdapter(rcAdapter);*/
-
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        //recycle view
         List<Data> data = fill_with_data();
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
@@ -46,7 +45,6 @@ public class ListJobs extends ActionBarActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
-
 
     public List<Data> fill_with_data() {
 
@@ -62,9 +60,19 @@ public class ListJobs extends ActionBarActivity {
         return data;
     }
     @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.list_job, menu);
         return true;
     }
 
@@ -79,25 +87,34 @@ public class ListJobs extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        if(id == R.id.action_refresh){
-            Toast.makeText(ListJobs.this, "Refresh App", Toast.LENGTH_LONG).show();
-        }
-        if(id == R.id.action_new){
-            Toast.makeText(ListJobs.this, "Create Text", Toast.LENGTH_LONG).show();
-        }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private List<ItemObject> getAllItemList(){
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
 
-        List<ItemObject> allItems = new ArrayList<ItemObject>();
-        allItems.add(new ItemObject("United States", R.drawable.newyork));
-        allItems.add(new ItemObject("Canada", R.drawable.canada));
-        allItems.add(new ItemObject("United Kingdom", R.drawable.uk));
-        allItems.add(new ItemObject("Germany", R.drawable.germany));
-        allItems.add(new ItemObject("Sweden", R.drawable.sweden));
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_profile) {
+            Intent intent = new Intent(ListJob.this, Profile.class);
+            startActivity(intent);
+            //finish();
+        } else if (id == R.id.nav_job_achieved) {
 
-        return allItems;
+        } else if (id == R.id.nav_job_offered) {
+
+        } else if (id == R.id.nav_offer) {
+
+        } else if (id == R.id.nav_disconnect) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

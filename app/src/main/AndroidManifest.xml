@@ -35,9 +35,19 @@
             android:label="@string/title_activity_sign_up"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ListJobs"
+            android:label="Liste Jobs"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ResetPasswordActivity"
             android:label="@string/title_activity_reset_password"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListJob"
+            android:label="@string/title_activity_list_job"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
